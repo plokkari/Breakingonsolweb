@@ -256,7 +256,7 @@
 </head>
 <body>
     <section class="video-section">
-        <img src="/api/placeholder/800/800" alt="Breaking Sol Mascots in Lab" class="mascot-image">
+        <img src="images/Bad.gif" alt="Breaking Sol Mascots in Lab" class="mascot-image">
         <div class="ticker-wrap">
             <div class="ticker">
                 <span>$BREAKS</span>
@@ -283,7 +283,7 @@
     
     <section>
         <h1 class="title">Breaking Sol</h1>
-        <img src="/api/placeholder/300/300" alt="Breaking Sol Mascot" class="about-image">
+        <img src="IMG_0365.jpeg" alt="Breaking Sol Mascot" class="about-image">
         <div class="description">
             Breaking Sol is Where Pepe and Chillguy meet to make the most profit possible on the streets. The product is 99.9% pure blue crystal for max profit. Their plan is to take over the Solana universe.
         </div>
@@ -303,13 +303,13 @@
 
     <footer class="social-footer">
         <a href="https://t.me/+crzn7-OC0943ZTQ0" target="_blank" class="social-icon">
-            <img src="/api/placeholder/40/40" alt="Telegram">
+            <img src="image/Telegram" alt="Telegram">
         </a>
         <a href="https://x.com/breakingonsol?s=11" target="_blank" class="social-icon">
-            <img src="/api/placeholder/40/40" alt="X">
+            <img src="image/X" alt="X">
         </a>
         <a href="https://t.me/+crzn7-OC0943ZTQ0" target="_blank" class="social-icon">
-            <img src="/api/placeholder/40/40" alt="Coming Soon">
+            <img src="image/Dex" alt="Coming Soon">
         </a>
     </footer>
 
