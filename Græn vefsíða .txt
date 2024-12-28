@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Sol</title>
+    <style>
+        :root {
+            --primary: #023020;
+            --secondary: #065535;
+            --accent: #00CC7E;
+            --text: #ffffff;
+            --background: #011810;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .video-section {
+            padding: 0;
+            margin-top: -2rem;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .mascot-image {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0.9;
+            margin-top: 0;
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            height: 50px;
+            background: rgba(2, 48, 32, 0.9);
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            margin-top: -50px;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker {
+            position: absolute;
+            white-space: nowrap;
+            will-change: transform;
+            animation: scroll 15s linear infinite;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 204, 126, 0.4);
+        }
+
+        .ticker span {
+            margin: 0 2rem;
+        }
+
+        .ticker:nth-child(2) {
+            animation-delay: -7.5s;
+        }
+
+        .title {
+            font-size: 5rem;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: bold;
+            color: var(--text);
+            text-shadow: 0 0 15px rgba(0, 204, 126, 0.3);
+        }
+
+        .about-image {
+            width: 300px;
+            height: auto;
+            margin: 2rem 0;
+            transition: transform 0.3s ease;
+            mix-blend-mode: normal;
+            background: transparent;
+        }
+
+        .description {
+            max-width: 800px;
+            width: 100%;
+            min-height: 200px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            background: rgba(6, 85, 53, 0.15);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0, 204, 126, 0.05);
+        }
+
+        .contract-box {
+            width: 80%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: rgba(6, 85, 53, 0.15);
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 204, 126, 0.05);
+        }
+
+        .contract-box:hover {
+            background: rgba(6, 85, 53, 0.25);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 204, 126, 0.1);
+        }
+
+        .why-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+
+        .why-title {
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            color: var(--text);
+            text-shadow: 0 0 15px rgba(0, 204, 126, 0.3);
+        }
+
+        .diagonal-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .diagonal-box {
+            width: 250px;
+            height: auto;
+            min-height: 150px;
+            background: rgba(6, 85, 53, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--secondary);
+            transform: rotate(-5deg);
+            margin: 0.8rem;
+            font-size: 0.95rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 204, 126, 0.05);
+        }
+
+        .diagonal-box:hover {
+            transform: rotate(0deg) scale(1.05);
+            background: rgba(6, 85, 53, 0.25);
+            box-shadow: 0 0 20px rgba(0, 204, 126, 0.1);
+        }
+
+        .diagonal-box:nth-child(2) {
+            transform: translateY(40px) rotate(-5deg);
+        }
+
+        .diagonal-box:nth-child(3) {
+            transform: translateY(80px) rotate(-5deg);
+        }
+
+        .social-footer {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(6, 85, 53, 0.15);
+            border: 1px solid rgba(6, 85, 53, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            padding: 8px;
+            box-shadow: 0 0 10px rgba(0, 204, 126, 0.05);
+        }
+
+        .social-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(6, 85, 53, 0.3);
+            box-shadow: 0 0 15px rgba(0, 204, 126, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+
+            .diagonal-boxes {
+                flex-direction: column;
+            }
+
+            .diagonal-box {
+                transform: none !important;
+                margin: 1rem auto;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .social-icon img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="video-section">
+        <img src="/api/placeholder/800/800" alt="Breaking Sol Mascots in Lab" class="mascot-image">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+            </div>
+            <div class="ticker">
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+                <span>$BREAKS</span>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h1 class="title">Breaking Sol</h1>
+        <img src="/api/placeholder/300/300" alt="Breaking Sol Mascot" class="about-image">
+        <div class="description">
+            Breaking Sol is Where Pepe and Chillguy meet to make the most profit possible on the streets. The product is 99.9% pure blue crystal for max profit. Their plan is to take over the Solana universe.
+        </div>
+        <div class="contract-box" onclick="copyContract()">
+            CA: Click here
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2 class="why-title">Why Breaking Sol?</h2>
+        <div class="diagonal-boxes">
+            <div class="diagonal-box">Fair launch we're using pump.fun so there is no pre-sale and no insiders.</div>
+            <div class="diagonal-box">Breaking Bad and Better Call Saul, are top tier series and loved worldwide.</div>
+            <div class="diagonal-box">We care about our product and Dev wallet will only be used to promote/boost $BREAKS.</div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <a href="https://t.me/+crzn7-OC0943ZTQ0" target="_blank" class="social-icon">
+            <img src="/api/placeholder/40/40" alt="Telegram">
+        </a>
+        <a href="https://x.com/breakingonsol?s=11" target="_blank" class="social-icon">
+            <img src="/api/placeholder/40/40" alt="X">
+        </a>
+        <a href="https://t.me/+crzn7-OC0943ZTQ0" target="_blank" class="social-icon">
+            <img src="/api/placeholder/40/40" alt="Coming Soon">
+        </a>
+    </footer>
+
+    <script>
+        function copyContract() {
+            const contractAddress = "5nUF1o8rFLzC3gNcMqvH3zmXFPPu91gT3u8xw2xupump";
+            navigator.clipboard.writeText(contractAddress)
+                .then(() => {
+                    alert("Contract address copied!");
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+    </script>
+</body>
+</html>
