@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Sol</title>
+    <style>
+        :root {
+            --primary: #023020;
+            --secondary: #065535;
+            --accent: #00CC7E;
+            --text: #ffffff;
+            --background: #011810;
+            --box-bg: rgba(6, 85, 53, 0.25);
+            --box-hover: rgba(6, 85, 53, 0.35);
+            --border-color: #0a7545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .video-section {
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .mascot-image {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            height: 50px;
+            background: rgba(2, 48, 32, 0.95);
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+            margin-top: -50px;
+            backdrop-filter: blur(5px);
+            border-top: 1.5px solid var(--border-color);
+            border-bottom: 1.5px solid var(--border-color);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker {
+            position: absolute;
+            white-space: nowrap;
+            will-change: transform;
+            animation: scroll 15s linear infinite;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 204, 126, 0.4);
+        }
+
+        .ticker span {
+            margin: 0 2rem;
+        }
+
+        .ticker:nth-child(2) {
+            animation-delay: -7.5s;
+        }
+
+        .title {
+            font-size: 5rem;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: bold;
+            color: var(--text);
+            text-shadow: 0 0 15px rgba(0, 204, 126, 0.3);
+        }
+
+        .about-image {
+            width: 300px;
+            height: auto;
+            margin: 2rem 0;
+            transition: transform 0.3s ease;
+            mix-blend-mode: normal;
+            background: transparent;
+        }
+
+        .description {
+            max-width: 800px;
+            width: 100%;
+            min-height: 200px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            background: var(--box-bg);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(0, 204, 126, 0.15),
+                        inset 0 0 10px rgba(0, 204, 126, 0.05);
+        }
+
+        .contract-box {
+            width: 80%;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: var(--box-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 204, 126, 0.15),
+                        inset 0 0 10px rgba(0, 204, 126, 0.05);
+        }
+
+        .contract-box:hover {
+            background: var(--box-hover);
+            transform: scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 204, 126, 0.25),
+                        inset 0 0 15px rgba(0, 204, 126, 0.1);
+        }
+
+        .why-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+
+        .why-title {
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            color: var(--text);
+            text-shadow: 0 0 15px rgba(0, 204, 126, 0.3);
+        }
+
+        .diagonal-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .diagonal-box {
+            width: 250px;
+            height: auto;
+            min-height: 150px;
+            background: var(--box-bg);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            transform: rotate(-5deg);
+            margin: 0.8rem;
+            font-size: 0.95rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 204, 126, 0.15),
+                        inset 0 0 10px rgba(0, 204, 126, 0.05);
+        }
+
+        .diagonal-box:hover {
+            transform: rotate(0deg) scale(1.05);
+            background: var(--box-hover);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 204, 126, 0.25),
+                        inset 0 0 15px rgba(0, 204, 126, 0.1);
+        }
+
+        .diagonal-box:nth-child(2) {
+            transform: translateY(40px) rotate(-5deg);
+        }
+
+        .diagonal-box:nth-child(3) {
+            transform: translateY(80px) rotate(-5deg);
+        }
+
+        /* New Roadmap Section Styles */
+        .roadmap-section {
+            padding: 2rem 1rem;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+
+        .roadmap-content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .roadmap-box {
+            background: rgba(2, 48, 32, 0.85);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            width: auto;
+            max-width: 500px;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-box:hover {
+            background: rgba(2, 48, 32, 0.95);
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+
+        .roadmap-box h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .roadmap-box ul {
+            list-style: none;
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        .roadmap-box li {
+            margin: 0.25rem 0;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .roadmap-box li:before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+
+        .social-footer {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--box-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            padding: 8px;
+            box-shadow: 0 0 15px rgba(0, 204, 126, 0.1);
+        }
+
+        .social-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: var(--box-hover);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 204, 126, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 0.5rem;
+                min-height: auto;
+            }
+
+            .video-section {
+                min-height: 90vh;
+                padding: 0;
+            }
+
+            .mascot-image {
+                object-fit: contain;
+                background-color: var(--primary);
+                height: 90vh;
+                width: 100%;
+                margin: 0;
+            }
+
+            .title {
+                font-size: 2.5rem;
+                margin: 1rem 0;
+            }
+
+            .about-image {
+                width: 80%;
+                max-width: 250px;
+                margin: 0.5rem 0;
+            }
+
+            .description {
+                font-size: 1rem;
+                padding: 1.5rem;
+                margin: 0.5rem 0;
+                min-height: auto;
+            }
+
+            .contract-box {
+                width: 90%;
+                padding: 1rem;
+                margin: 0.5rem auto;
+            }
+
+            .why-section {
+                padding: 1rem;
+            }
+
+            .why-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .diagonal-boxes {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .diagonal-box {
+                transform: none !important;
+                margin: 0.5rem auto;
+                width: 100%;
+                max-width: 300px;
+                padding: 1.2rem;
+            }
+
+            .diagonal-box:nth-child(2),
+            .diagonal-box:nth-child(3) {
+                transform: none !important;
+                margin: 0.5rem auto;
+            }
+
+            .roadmap-box {
+                margin-left: 0.5rem;
+                width: 90%;
+                padding: 0.75rem 1rem;
+            }
+
+            .roadmap-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .roadmap-box li {
+                font-size: 0.9rem;
+            }
+
+            .ticker {
+                font-size: 1.2rem;
+            }
+
+            .ticker span {
+                margin: 0 1rem;
+            }
+
+            .social-footer {
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                padding: 6px;
+            }
+
+            .social-icon img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="video-section">
+        <img src="images/Bad.gif" alt="Breaking Sol Mascots in Lab" class="mascot-image">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+            </div>
+            <div class="ticker">
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h1 class="title">Breaking Sol</h1>
+        <img src="images/IMG_0365.jpeg" alt="Breaking Sol Mascot" class="about-image">
+        <div class="description">
+            Breaking Sol is Where Pepe and Chillguy meet to make the most profit possible on the streets. The product is 99.9% pure blue crystal for max profit. Their plan is to take over the Solana universe.
+        </div>
+        <div class="contract-box" onclick="copyContract()">
+            CA: Coming soon!
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2 class="why-title">Why Breaking Sol?</h2>
+        <div class="diagonal-boxes">
+            <div class="diagonal-box">Fair launch we're using pump.fun so there is no pre-sale and no insiders.</div>
+            <div class="diagonal-box">Breaking Bad and Better Call Saul, are top tier series and loved worldwide.</div>
+            <div class="diagonal-box">We care about our product and Dev wallet will only be used to promote/boost $BSOL.</div>
+        </div>
+    </section>
+
+    <section class="roadmap-section">
+        <div class="roadmap-content-wrapper">
+            <div class="roadmap-box">
+                <h3>Breaking Sol Roadmap</h3>
+            </div>
+
+            <div class="roadmap-box">
+                <h3>Phase 1: The Lab</h3>
+                <ul>
+                    <li>Concept creation and branding</li>
+                    <li>Token contract development on Solana</li>
+                    <li>Launch on DEX Moonshot</li>
+                    <li>Build community engagement</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-box">
+                <h3>Phase 2: The Cook</h3>
+                <ul>
+                    <li>Social media campaigns</li>
+                    <li>Influencer collaborations</li>
+                    <li>Secure DEX listings</li>
+                    <li>Initial token burns</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-box">
+                <h3>Phase 3: The Explosion</h3>
+                <ul>
+                    <li>Launch airdrops</li>
+                    <li>Cross-chain expansion</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-box">
+                <h3>Phase 4: The Empire</h3>
+                <ul>
+                    <li>Marketplace integration</li>
+                    <li>Establish as Solana memecoin king</li>
+                    <li>Community governance</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-box">
+                <h3>"The cook has just begun..."</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <a href="https://t.me/breakingonsol" target="_blank" class="social-icon">
+            <img src="images/Telegram" alt="Telegram">
+        </a>
+        <a href="https://x.com/breakingonsol?s=11" target="_blank" class="social-icon">
+            <img src="images/X" alt="X">
+        </a>
+        <a href="https://t.me/+crzn7-OC0943ZTQ0" target="_blank" class="social-icon">
+            <img src="images/Dex" alt="Coming Soon">
+        </a>
+    </footer>
+
+    <script>
+        function copyContract() {
+            const contractAddress = "Coming soon!";
+            navigator.clipboard.writeText(contractAddress)
+                .then(() => {
+                    alert("Contract address copied!");
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+    </script>
+</body>
+</html>
