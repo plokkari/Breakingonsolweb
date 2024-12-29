@@ -487,4 +487,125 @@
     <section class="video-section">
         <img src="images/Bad.gif" alt="Breaking Sol Mascots in Lab" class="mascot-image">
         <div class="ticker-wrap">
-            
+            <div class="ticker-wrap">
+            <div class="ticker">
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+            </div>
+            <div class="ticker">
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+                <span>$BSOL</span>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h1 class="title">Breaking Sol</h1>
+        <img src="images/IMG_0365.jpeg" alt="Breaking Sol Mascot" class="about-image">
+        <div class="description">
+            Breaking Sol is Where Pepe and Chillguy meet to make the most profit possible on the streets. The product is 99.9% pure blue crystal for max profit. Their plan is to take over the Solana universe.
+        </div>
+        <div class="contract-box" onclick="copyContract()">
+            CA: Coming soon!
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2 class="why-title">Why Breaking Sol?</h2>
+        <div class="diagonal-boxes">
+            <div class="diagonal-box">Fair launch we're using pump.fun so there is no pre-sale and no insiders.</div>
+            <div class="diagonal-box">Breaking Bad and Better Call Saul, are top tier series and loved worldwide.</div>
+            <div class="diagonal-box">We care about our product and Dev wallet will only be used to promote/boost $BSOL.</div>
+        </div>
+    </section>
+
+    <section class="roadmap-section">
+        <h2 class="roadmap-title">Breaking Sol Roadmap</h2>
+        
+        <div class="roadmap-box">
+            <h3>Breaking Sol Roadmap</h3>
+            <ul>
+                <li>Our comprehensive plan for Breaking Sol's development and growth</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-box">
+            <h3>Phase 1: The Lab</h3>
+            <ul>
+                <li>Concept creation and branding (Inspired by Breaking Bad)</li>
+                <li>Token contract development on Solana</li>
+                <li>Launch on DEX Moonshot with fair distribution</li>
+                <li>Build an engaged community across Twitter, Discord, and Telegram</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-box">
+            <h3>Phase 2: The Cook</h3>
+            <ul>
+                <li>Social media campaigns to spread awareness (#BreakingSol)</li>
+                <li>Collaborate with influencers in the memecoin and Solana space</li>
+                <li>Secure $BSOL listings on prominent Solana DEXs</li>
+                <li>Begin initial token burn events to boost scarcity</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-box">
+            <h3>Phase 3: The Explosion</h3>
+            <ul>
+                <li>Launch airdrops to grow the community further</li>
+                <li>Expand $BSOL presence to cross-chain platforms</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-box">
+            <h3>Phase 4: The Empire</h3>
+            <ul>
+                <li>Breaking Sol marketplace integration</li>
+                <li>Establish $BSOL as the memecoin king of Solana</li>
+                <li>Long-term community-driven governance implementation</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-box quote-box">
+            "The cook has just begun. The empire is yours to build."
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <a href="https://t.me/breakingonsol" target="_blank" class="social-icon">
+            <img src="images/Telegram" alt="Telegram">
+        </a>
+        <a href="https://x.com/breakingonsol?s=11" target="_blank" class="social-icon">
+            <img src="images/X" alt="X">
+        </a>
+        <a href="https://t.me/+crzn7-OC0943ZTQ0" target="_blank" class="social-icon">
+            <img src="images/Dex" alt="Coming Soon">
+        </a>
+    </footer>
+
+    <script>
+        function copyContract() {
+            const contractAddress = "Coming soon!";
+            navigator.clipboard.writeText(contractAddress)
+                .then(() => {
+                    alert("Contract address copied!");
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+    </script>
+</body>
+</html>
