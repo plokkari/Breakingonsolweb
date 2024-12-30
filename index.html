@@ -74,33 +74,47 @@
             100% { transform: translateX(-100%); }
         }
 
-        .ticker {
-            position: absolute;
-            white-space: nowrap;
-            will-change: transform;
-            animation: scroll 15s linear infinite;
-            color: var(--accent);
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-shadow: 0 0 8px rgba(0, 204, 126, 0.4);
-        }
+       .ticker-wrap {
+    width: 100%;
+    height: 50px;
+    background: rgba(2, 48, 32, 0.95);
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    margin-top: -50px;
+    backdrop-filter: blur(5px);
+    border-top: 1.5px solid var(--border-color);
+    border-bottom: 1.5px solid var(--border-color);
+    z-index: 100;
+}
 
-        .ticker span {
-            margin: 0 2rem;
-        }
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
 
-        .ticker:nth-child(2) {
-            animation-delay: -7.5s;
-        }
+.ticker {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scroll 20s linear infinite;
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 204, 126, 0.4);
+    width: auto;
+    display: flex;
+    align-items: center;
+}
 
-        .title {
-            font-size: 5rem;
-            text-align: center;
-            margin: 2rem 0;
-            font-weight: bold;
-            color: var(--text);
-            text-shadow: 0 0 15px rgba(0, 204, 126, 0.3);
-        }
+.ticker span {
+    margin: 0 2rem;
+    display: inline-block;
+}
+
+.ticker:nth-child(2) {
+    animation-delay: -10s;
+}
 
         .about-image {
             width: 300px;
@@ -487,28 +501,31 @@
     <section class="video-section">
         <img src="images/Bad.gif" alt="Breaking Sol Mascots in Lab" class="mascot-image">
         <div class="ticker-wrap">
-            <div class="ticker-wrap">
-            <div class="ticker">
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-            </div>
-            <div class="ticker">
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-                <span>$BSOL</span>
-            </div>
-        </div>
+    <div class="ticker" style="display: flex;">
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+    </div>
+    <div class="ticker" style="display: flex;">
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+        <span>$BSOL</span>
+    </div>
+</div>
     </section>
     
     <section>
